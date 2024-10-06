@@ -1,7 +1,7 @@
 {
   "name": "email-sender",
   "version": "1.0.0",
-  "main": "app.js",
+  "main": "index.js",
   "scripts": {
     "start": "nodemon server.js",
     "build": "echo hello"
