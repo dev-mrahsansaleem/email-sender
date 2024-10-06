@@ -29,7 +29,7 @@ app.get("/", (req, res) => {
 
 // Endpoint to send email with attachment
 app.post('/send-email', upload.single('file'), async (req, res) => {
-    const { to, subject, text } = req.body;
+    const { to, from, subject, text } = req.body;
     const file = req.file;
 
     // Check if file was uploaded
@@ -37,12 +37,12 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
         return res.status(400).send('No file uploaded.');
     }
     // Check if file was uploaded
-    if (!to || !subject || !text) {
+    if (!to || !from || !subject || !text) {
         return res.status(400).send('Request is not formated correctly contact admin');
     }
     const msg = {
         to,
-        from: 'ahsansaleem6389@gmail.com', // Replace with your email
+        from,
         subject,
         text,
         attachments: [
