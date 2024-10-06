@@ -56,9 +56,9 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
     };
     try {
         await sgMail.send(msg);
-        res.status(200).send('Email sent successfully!');
+        res.status(200).send({ msg: 'Email sent successfully!' });
     } catch (error) {
-        res.status(500).send('Error sending email.');
+        res.status(500).send({ msg: 'Error sending email.' });
     }
 });
 
