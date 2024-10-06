@@ -5,7 +5,12 @@ const morgan = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
+const dotenv = require('dotenv');
+dotenv.config("./.env")
 const app = express();
+
+
+const port = process.env.PORT || 8080
 
 sgMail.setApiKey(process.env.API_KEY || 'not key found')
 
@@ -58,4 +63,8 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
 });
 
 
+
+app.listen(port, () => {
+    console.log(`Server is running on http://localhost:${port}`);
+});
 module.exports = app;
