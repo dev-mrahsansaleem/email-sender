@@ -6,6 +6,9 @@
     "start": "nodemon server.js",
     "build": "echo hello"
   },
+  "engines": {
+    "node": "20"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
