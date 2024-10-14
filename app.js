@@ -40,8 +40,9 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
     if (!to || !from || !subject || !text) {
         return res.status(400).send('Request is not formated correctly contact admin');
     }
+    const listOfEmails = to.split(',')
     const msg = {
-        to,
+        listOfEmails,
         from,
         subject,
         text,
