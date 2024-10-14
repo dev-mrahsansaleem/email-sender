@@ -42,7 +42,7 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
     }
     const listOfEmails = to.split(',')
     const msg = {
-        listOfEmails,
+        to: listOfEmails,
         from,
         subject,
         text,
