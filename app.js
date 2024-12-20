@@ -37,20 +37,22 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
         return res.status(400).send('Request is not formated correctly contact admin');
     }
     const listOfEmails = to.split(',')
-    const msg = {
+    var msg = {
         to: listOfEmails,
         from,
         subject,
         text,
-        attachments: [
+    };
+    if (file) {
+        msg['attachments'] = [
             {
                 content: file.buffer.toString('base64'),
                 filename: file.originalname,
                 type: file.mimetype,
                 disposition: 'attachment',
             },
-        ],
-    };
+        ]
+    }
     try {
         await sgMail.send(msg);
         res.status(200).send({ msg: 'Email sent successfully!' });
