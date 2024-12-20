@@ -33,10 +33,6 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
     const file = req.file;
 
     // Check if file was uploaded
-    if (!file) {
-        return res.status(400).send('No file uploaded.');
-    }
-    // Check if file was uploaded
     if (!to || !from || !subject || !text) {
         return res.status(400).send('Request is not formated correctly contact admin');
     }
