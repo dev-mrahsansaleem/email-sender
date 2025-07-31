@@ -79,7 +79,7 @@ app.post('/send-email', upload.single('file'), async (req, res) => {
         res.status(200).send({ msg: 'Email sent successfully!', data });
     } catch (error) {
         console.error(BREVO_API_KEY, 'Error:', error);
-        res.status(500).send({ msg: 'Error sending email.', error });
+        res.status(500).send({ msg: 'Error sending email.', BREVO_API_KEY, error });
     }
     // try {
     //     await sgMail.send(msg);
